@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "vue-doo demo.",
   "main": "index.js",
-  "scripts": {    
-    "run-web-server": "node app.js"  
+  "scripts": {
+    "run-web-server": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/soundsreal/vue-todo#readme",
   "dependencies": {
+    "bootstrap-vue": "^2.13.0",
+    "jquery": "^1.9.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

@@ -2,8 +2,10 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
+
 app.use('/assets', [
-    express.static(__dirname + '/node_modules/vue/dist')
+    //  Load required Bootstrap and BootstrapVue CSS 
+    express.static(__dirname + '/node_modules'),
 ]);
 
 // viewed at http://localhost:8080
