@@ -18,7 +18,7 @@
   "homepage": "https://github.com/soundsreal/vue-todo#readme",
   "dependencies": {
     "bootstrap-vue": "^2.13.0",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
