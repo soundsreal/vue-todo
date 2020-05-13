@@ -12,23 +12,17 @@
 <body>
 <!-- Our application root element -->
 <div id="app">
-  <b-container>
-    <b-jumbotron header="BootstrapVue" lead="Bootstrap v4 Components for Vue.js 2">
-      <p>For more information visit our website</p>
-      <b-btn variant="primary" href="https://bootstrap-vue.org/">More Info</b-btn>
-    </b-jumbotron>
 
-    <b-form-group
-      horizontal
-      :label-cols="4"
-      description="Let us know your name."
-      label="Enter your name"
-    >
-      <b-form-input v-model.trim="name"></b-form-input>
-    </b-form-group>
+  <main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+      <todo-item 
+                 v-for="item in groceryList"
+                 v-bind:todo="item"
+                 v-bind:key="item.id">
+      </todo-item>
+  </main>
 
-    <b-alert variant="success" :show="showAlert">Hello {{ name }}</b-alert>
-  </b-container>
 </div>
 
   <script src="/assets/vue/dist/vue.js"></script>
@@ -38,18 +32,85 @@
 
      <!-- Start running your app -->
      <script>
-      window.app = new Vue({
-        el: '#app',
-        data: {
-          name: ''
-        },
-        computed: {
-          showAlert() {
-            return this.name.length > 4 ? true : false
+        Vue.component('todo-item', {
+          props: ['todo'],
+          template: `
+              <div class="media text-muted pt-3">
+                <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" 
+                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" 
+                focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" 
+                height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                  <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark"> {{ todo.text }} |  {{ todo.qty }}</strong>                 
+                    <a href="#">Edit</a>
+                  </div>
+                  <span class="d-block">@username</span>
+                </div>
+              </div>
+            `
+        })
+
+        var app = new Vue({
+          el: '#app',
+          data: {
+            groceryList: [
+              { id: 0, text: 'Vegetables', qty: 10 },
+              { id: 1, text: 'Cheese', qty: 4 },
+              { id: 2, text: 'Whatever else humans are supposed to eat', qty: 6 }
+            ]
           }
-        }
-      })
+        })
     </script>
 
 </body>
 </html>
+
+
+
+
+      <!-- 
+      <small class="d-block text-right mt-3">
+        <a href="#">All updates</a>
+      </small>
+    </div>
+  
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">Full Name</strong>
+
+
+            <a href="#">Follow</a>
+          </div>
+          <span class="d-block">@username</span>
+        </div>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">Full Name</strong>
+            <a href="#">Follow</a>
+          </div>
+          <span class="d-block">@username</span>
+        </div>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">Full Name</strong>
+            <a href="#">Follow</a>
+          </div>
+          <span class="d-block">@username</span>
+        </div>
+      </div>
+      <small class="d-block text-right mt-3">
+        <a href="#">All suggestions</a>
+      </small>
+    </div>
+-->
