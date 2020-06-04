@@ -12,29 +12,26 @@
 <body>
 <!-- Our application root element -->
 <div id="app">
-
   <main role="main" class="container">
     <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+      <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>      
       <todo-item 
                  v-for="item in groceryList"
                  v-bind:todo="item"
                  v-bind:key="item.id">
       </todo-item>
   </main>
-
 </div>
 
   <script src="/assets/vue/dist/vue.js"></script>
   <script src="/assets/bootstrap-vue/dist/bootstrap-vue.min.js"></script>
   <script src="/assets/bootstrap-vue/dist/bootstrap-vue-icons.min.js"></script>
 
-
      <!-- Start running your app -->
      <script>
         Vue.component('todo-item', {
           props: ['todo'],
-          template: `
+          template: `  
               <div class="media text-muted pt-3">
                 <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" 
                 xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" 
